@@ -1,0 +1,43 @@
+name: "Copilot Setup Steps"
+
+on:
+    workflow_dispatch:
+    push:
+        paths:
+            - .github/workflows/copilot-setup-steps.yml
+    pull_request:
+        paths:
+            - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+    copilot-setup-steps:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Java 21
+              uses: actions/setup-java@v4
+              with:
+                  java-version: '21'
+                  distribution: 'temurin'
+                  cache: 'maven'
+
+            - name: Build brigadier stubs and Paper API locally
+              run: |
+                  # Create brigadier stubs
+                  BRIG_DIR=$(mktemp -d)
+                  mkdir -p $BRIG_DIR/src/main/java/com/mojang/brigadier/{arguments,builder,context,exceptions,suggestion,tree}
+                  
+                  for f in $(find /home/runner/work/paper-api-build/brigadier-stubs/src -name "*.java" 2>/dev/null); do
+                    pkg=$(grep "^package" "$f" | sed 's/package //;s/;//')
+                    mkdir -p "$BRIG_DIR/src/main/java/$(echo $pkg | tr '.' '/')"
+                    cp "$f" "$BRIG_DIR/src/main/java/$(echo $pkg | tr '.' '/')/"
+                  done || true
+                  
+                  # Build Paper API from source
+                  git clone --depth=1 --filter=blob:none --sparse \
+                    https://github.com/PaperMC/Paper.git /tmp/paper-source
+                  cd /tmp/paper-source && git sparse-checkout set paper-api && git checkout

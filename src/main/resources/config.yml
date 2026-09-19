@@ -1,0 +1,12 @@
+kill-loss-on-death: 2
+max-kills-for-progression: 5
+max-team-size: 3
+bounty-xp-cost: 5
+most-wanted-interval-minutes: 60
+deaths-before-max-health-reduction: 3
+reduced-max-health-hearts: 7
+enderperls-per-player-limit: 8
+mace-limit-per-player: 1
+mace-global-cooldown-seconds: 12
+global-attack-speed-base: 3.2
+golden-apple-recipe: true

@@ -1,0 +1,32 @@
+name: MobSMP
+version: 1.0.0
+main: de.priyme2.mobsmp.MobSMP
+api-version: 1.21
+description: A Minecraft SMP plugin with mob classes, kill system, bounties, and more
+authors: [PrIyme2]
+
+commands:
+  ability:
+    description: Use your mob class ability
+    usage: /ability <1|2>
+  mobsmp:
+    description: Admin commands for MobSMP
+    permission: mobsmp.admin
+    usage: /mobsmp <reload|setclass|setkills|reset|info|event>
+  bounty:
+    description: Manage bounties
+    usage: /bounty <set|list|info>
+  team:
+    description: Manage teams
+    usage: /team <create|invite|accept|leave|info|disband|chat>
+  stats:
+    description: View player statistics
+    usage: /stats [player]
+
+permissions:
+  mobsmp.admin:
+    description: Access to admin commands
+    default: op
+  mobsmp.ability.nocooldown:
+    description: Bypass ability cooldowns
+    default: false

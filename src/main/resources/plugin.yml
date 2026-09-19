@@ -1,0 +1,14 @@
+name: MobSMP
+version: 1.0.0
+main: de.priyme2.mobsmp.MobSMP
+api-version: '1.21'
+commands:
+  mobsmp: {}
+  ability: {}
+  bounty: {}
+  team: {}
+  tc: {}
+  stats: {}
+permissions:
+  mobsmp.admin:
+    default: op

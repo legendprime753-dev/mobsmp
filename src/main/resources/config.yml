@@ -1,0 +1,31 @@
+reduced-max-health-hearts: 7
+most-wanted-interval: 3600
+
+# Feature Toggles
+features:
+  combat-log-system: true
+  anti-kill-boosting: true
+  scoreboard: true
+  actionbar-cooldowns: true
+
+combat-log:
+  duration-seconds: 15
+  kill-on-logout: true
+
+anti-kill-boosting:
+  cooldown-minutes-per-player: 30
+
+bounty:
+  cost-enabled: true
+  cost-item: DIAMOND_BLOCK
+  cost-amount: 1
+
+events:
+  # Sollen Events (Double Kills, Bounty Rush, Special Drops) automatisch starten?
+  random-events-enabled: true
+  # Wie oft soll versucht werden, ein Event zu starten? (in Sekunden, Standard: 3600 = 1 Stunde)
+  interval-seconds: 3600
+  # Wie lange soll ein zufälliges Event laufen? (in Sekunden, Standard: 600 = 10 Minuten)
+  duration-seconds: 600
+  # Wie viele Spieler müssen mindestens online sein, damit ein Random-Event startet?
+  minimum-players-required: 4

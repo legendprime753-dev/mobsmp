@@ -1,0 +1,12 @@
+/target/
+.idea/
+*.iml
+
+# Additional ignores added by upload script
+.gradle/
+build/
+run/
+*.class
+*.log
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
